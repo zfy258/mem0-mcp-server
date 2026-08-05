@@ -1,0 +1,30 @@
+{
+  "description": "Local Mem0 memory hooks for Codex: load memories at session start, save each turn at Stop.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "<VENV_PYTHON> <REPO_DIR>/hooks/on_session_start.py",
+            "statusMessage": "Loading local mem0 context...",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "<VENV_PYTHON> <REPO_DIR>/hooks/on_stop.py",
+            "statusMessage": "Saving turn to local mem0...",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
