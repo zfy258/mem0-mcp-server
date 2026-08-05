@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mem0-mcp-server"
+version = "0.1.0"
+description = "Local Mem0 MCP server with persistent memory for any MCP client"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Mr.ml" }]
+keywords = ["mem0", "mcp", "memory", "codex", "claude", "cursor"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+]
+dependencies = [
+    "mem0ai>=2.0.15",
+]
+
+[project.optional-dependencies]
+fastembed = ["fastembed>=0.3.1"]
+ollama = ["ollama>=0.3.0"]
+
+[project.urls]
+Homepage = "https://github.com/zfy258/mem0-mcp-server"
+Repository = "https://github.com/zfy258/mem0-mcp-server"
+
+[project.scripts]
+mem0-mcp-server = "mcp_server:main"
+
+[tool.setuptools]
+py-modules = ["mcp_server"]
