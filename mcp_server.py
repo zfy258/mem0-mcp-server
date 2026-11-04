@@ -195,8 +195,8 @@ def build_memory():
             },
             "history_db_path": os.path.join(mem0_dir, "history.db"),
         }
-        memory = Memory.from_config(config)
-    elif _fastembed_available():
+        return Memory.from_config(config)
+    if _fastembed_available():
         try:
             print(
                 f"mem0-local: using local FastEmbed ({FASTEMBED_MODEL}).",
@@ -224,7 +224,7 @@ def build_memory():
             return memory
         except Exception as exc:  # noqa: BLE001 - model download or init can fail offline
             print(f"mem0-local: FastEmbed init failed ({exc}); falling back.", file=sys.stderr)
-    elif _ollama_available():
+    if _ollama_available():
         print(
             f"mem0-local: using local Ollama embedding ({OLLAMA_MODEL} @ {OLLAMA_HOST}).",
             file=sys.stderr,
